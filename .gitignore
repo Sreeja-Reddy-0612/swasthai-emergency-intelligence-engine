@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+.env
+
+# Node modules
+node_modules/
+
+# Build folders
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# VSCode
+.vscode/
+
+# Env files
+.env
+
+# Vector databases (future)
+faiss_index/
+chroma_db/
+
+# Python cache
+*.sqlite3
+
+# Mac
+.DS_Store
+
+# Windows
+desktop.ini
