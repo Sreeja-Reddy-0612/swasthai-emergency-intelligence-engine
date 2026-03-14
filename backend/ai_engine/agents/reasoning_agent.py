@@ -1,17 +1,18 @@
 from transformers import pipeline
-from ..utils.prompts import MEDICAL_REASONING_PROMPT
 
 _generator = None
 
 
 def load_llm():
+
     global _generator
 
     if _generator is None:
+
         _generator = pipeline(
             "text-generation",
             model="google/flan-t5-base",
-            max_length=256
+            max_length=200
         )
 
     return _generator
@@ -23,21 +24,40 @@ def run_reasoning_agent(state):
 
     query = state["message"]
 
+    graph = "\n".join(state.get("graph_hints", []))
+
     evidence = "\n".join(state["evidence"])
 
-    prompt = MEDICAL_REASONING_PROMPT.format(
-        query=query,
-        evidence=evidence
-    )
+    prompt = f"""
+You are an emergency medical assistant.
+
+User Situation:
+{query}
+
+Medical Knowledge Hints:
+{graph}
+
+Trusted Medical Evidence:
+{evidence}
+
+Generate clear step-by-step first aid instructions.
+
+Return only numbered instructions.
+"""
 
     output = generator(prompt)[0]["generated_text"]
 
-    steps = output.split("\n")
+    steps = []
+
+    for line in output.split("\n"):
+
+        if line.strip():
+            steps.append(line.strip())
 
     state["instructions"] = steps
 
     state["agent_trace"].append(
-        "Reasoning Agent: generated guidance"
+        "Reasoning Agent: generated medical guidance"
     )
 
     return state

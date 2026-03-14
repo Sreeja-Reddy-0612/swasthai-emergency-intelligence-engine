@@ -1,27 +1,18 @@
 from sentence_transformers import CrossEncoder
 
-_reranker = None
+reranker = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")
 
 
-def load_reranker():
-    global _reranker
+def rerank(query, documents):
 
-    if _reranker is None:
-        _reranker = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")
-
-    return _reranker
-
-
-def rerank(query, docs):
-    if len(docs) == 0:
-        return docs
-
-    reranker = load_reranker()
-
-    pairs = [[query, doc] for doc in docs]
+    pairs = [[query, doc] for doc in documents]
 
     scores = reranker.predict(pairs)
 
-    ranked = sorted(zip(docs, scores), key=lambda x: x[1], reverse=True)
+    ranked = sorted(
+        zip(documents, scores),
+        key=lambda x: x[1],
+        reverse=True
+    )
 
-    return [doc for doc, score in ranked]
+    return [doc for doc, score in ranked[:3]]

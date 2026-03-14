@@ -6,14 +6,19 @@ def run_retrieval_agent(state):
 
     query = state["message"]
 
-    docs = retrieve(query, k=5)
+    # Retrieve documents
+    docs = retrieve(query)
 
-    ranked_docs = rerank(query, docs)
+    # docs are already text strings
+    texts = docs
 
-    state["evidence"] = ranked_docs[:3]
+    # Rank them using cross-encoder
+    ranked_docs = rerank(query, texts)
+
+    state["evidence"] = ranked_docs
 
     state["agent_trace"].append(
-        "Retrieval Agent: retrieved and ranked evidence"
+        "Retrieval Agent: retrieved and ranked medical evidence"
     )
 
     return state
