@@ -2,18 +2,30 @@ from sentence_transformers import SentenceTransformer
 import numpy as np
 import faiss
 
-model = SentenceTransformer("all-MiniLM-L6-v2")
-
-index = faiss.read_index("data/processed/medical_index.faiss")
-
 from ingestion.document_loader import load_documents
 from ingestion.chunking import chunk_documents
 
-docs = load_documents()
-chunks = chunk_documents(docs)
+
+_model = None
+_index = None
+_chunks = None
 
 
-def retrieve(query, k=2):
+def load_retriever():
+    global _model, _index, _chunks
+
+    if _model is None:
+        _model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
+        _index = faiss.read_index("data/processed/medical_index.faiss")
+
+        docs = load_documents()
+        _chunks = chunk_documents(docs)
+
+    return _model, _index, _chunks
+
+
+def retrieve(query, k=5):
+    model, index, chunks = load_retriever()
 
     query_embedding = model.encode([query])
 
@@ -22,7 +34,7 @@ def retrieve(query, k=2):
     results = []
 
     for i in indices[0]:
-
-        results.append(chunks[i])
+        if i < len(chunks):
+            results.append(chunks[i])
 
     return results

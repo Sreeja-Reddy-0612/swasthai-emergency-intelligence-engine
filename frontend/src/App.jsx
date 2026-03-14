@@ -1,30 +1,48 @@
 import { useState } from "react";
-import EmergencyInput from "./components/EmergencyInput";
 import ResponsePanel from "./components/ResponsePanel";
-import { analyzeEmergency } from "./services/api";
 
-function App() {
+export default function App() {
 
+  const [input, setInput] = useState("");
   const [data, setData] = useState(null);
 
-  const handleSubmit = async (message) => {
+  const analyze = async () => {
 
-    const result = await analyzeEmergency(message);
+    const res = await fetch("http://127.0.0.1:8000/api/emergency/analyze", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: input
+      })
+    });
 
-    setData(result);
+    const json = await res.json();
+
+    setData(json);
   };
 
   return (
-    <div>
+    <div style={{ padding: "40px", fontFamily: "Arial" }}>
 
       <h1>SwasthAI Emergency Assistant</h1>
 
-      <EmergencyInput onSubmit={handleSubmit} />
+      <textarea
+        rows="3"
+        cols="50"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+      />
+
+      <br /><br />
+
+      <button onClick={analyze}>
+        Analyze Emergency
+      </button>
 
       <ResponsePanel data={data} />
 
     </div>
   );
 }
-
-export default App;
