@@ -1,0 +1,49 @@
+body {
+  font-family: "Segoe UI", Arial;
+  background: #f3f6fa;
+}
+
+.card{
+  background:white;
+  padding:30px;
+  border-radius:12px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+  text-align:left;
+}
+
+.emergency-level{
+  font-size:22px;
+  font-weight:bold;
+  color:#dc2626;
+  margin-bottom:25px;
+}
+
+.section-title{
+  font-size:18px;
+  font-weight:bold;
+  color:#2563eb;
+  margin-top:22px;
+  margin-bottom:10px;
+}
+
+.text{
+  color:#374151;
+}
+
+.list{
+  padding-left:20px;
+  line-height:1.8;
+  color:#374151;
+}
+
+.confidence{
+  font-weight:600;
+  color:#059669;
+}
+
+.agent-step{
+  background:#f8fafc;
+  padding:10px;
+  border-radius:6px;
+  margin-bottom:8px;
+}

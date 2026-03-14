@@ -4,21 +4,16 @@ from ..rag.reranker import rerank
 
 def run_retrieval_agent(state):
 
-    query = state["message"]
+    query=state["message"]
 
-    # Retrieve documents
-    docs = retrieve(query)
+    docs=retrieve(query)
 
-    # docs are already text strings
-    texts = docs
+    ranked_docs=rerank(query,docs)
 
-    # Rank them using cross-encoder
-    ranked_docs = rerank(query, texts)
-
-    state["evidence"] = ranked_docs
+    state["evidence"]=ranked_docs
 
     state["agent_trace"].append(
-        "Retrieval Agent: retrieved and ranked medical evidence"
+        "Retrieval Agent: retrieved medical evidence"
     )
 
     return state

@@ -1,0 +1,179 @@
+[
+{
+"condition":"dog bite",
+"symptoms":["bite wound","bleeding","animal bite"],
+"first_aid":[
+"Wash the wound with soap and running water for at least 15 minutes",
+"Apply antiseptic solution",
+"Cover with sterile dressing",
+"Seek medical care for rabies vaccination"
+],
+"source":"WHO / CDC"
+},
+
+{
+"condition":"snake bite",
+"symptoms":["bite marks","swelling","pain"],
+"first_aid":[
+"Keep the person calm and still",
+"Immobilize the affected limb",
+"Remove tight clothing or jewelry",
+"Seek emergency medical care immediately"
+],
+"source":"WHO"
+},
+
+{
+"condition":"heat stroke",
+"symptoms":["high body temperature","confusion","fainting"],
+"first_aid":[
+"Move the person to a shaded or cool place",
+"Remove excess clothing",
+"Apply cool water or ice packs",
+"Give small sips of water if conscious",
+"Seek emergency medical help immediately"
+],
+"source":"WHO"
+},
+
+{
+"condition":"drowning",
+"symptoms":["unconscious","not breathing"],
+"first_aid":[
+"Remove the person from water immediately",
+"Check breathing and pulse",
+"Call emergency services",
+"Begin CPR if not breathing"
+],
+"source":"American Heart Association"
+},
+
+{
+"condition":"fracture",
+"symptoms":["severe pain","swelling","bone deformity"],
+"first_aid":[
+"Immobilize the injured limb",
+"Apply a splint",
+"Apply ice to reduce swelling",
+"Seek medical attention immediately"
+],
+"source":"Red Cross"
+},
+
+{
+"condition":"burn",
+"symptoms":["red skin","pain","blisters"],
+"first_aid":[
+"Cool the burn under clean running water for 10 minutes",
+"Remove tight items near burn",
+"Cover with sterile dressing",
+"Do not apply ice directly"
+],
+"source":"Red Cross"
+},
+
+{
+"condition":"bleeding",
+"symptoms":["visible blood loss","open wound"],
+"first_aid":[
+"Apply firm pressure with clean cloth",
+"Elevate injured area if possible",
+"Apply bandage once bleeding slows",
+"Seek medical care if bleeding continues"
+],
+"source":"WHO"
+},
+
+{
+"condition":"heart attack",
+"symptoms":["chest pain","shortness of breath","nausea"],
+"first_aid":[
+"Call emergency medical services immediately",
+"Help the person sit and stay calm",
+"Loosen tight clothing",
+"Give aspirin if advised by medical professionals"
+],
+"source":"American Heart Association"
+},
+
+{
+"condition":"stroke",
+"symptoms":["face drooping","speech difficulty","arm weakness"],
+"first_aid":[
+"Call emergency services immediately",
+"Keep the person calm",
+"Note the time symptoms started",
+"Do not give food or drink"
+],
+"source":"American Heart Association"
+},
+
+{
+"condition":"choking",
+"symptoms":["unable to speak","difficulty breathing"],
+"first_aid":[
+"Encourage coughing",
+"If severe perform abdominal thrusts",
+"Call emergency services if obstruction persists"
+],
+"source":"Red Cross"
+},
+
+{
+"condition":"poisoning",
+"symptoms":["vomiting","confusion","abdominal pain"],
+"first_aid":[
+"Call poison control or emergency services",
+"Do not induce vomiting unless instructed",
+"Provide information about substance consumed"
+],
+"source":"CDC"
+},
+
+{
+"condition":"allergic reaction",
+"symptoms":["rash","swelling","difficulty breathing"],
+"first_aid":[
+"Call emergency services immediately",
+"Administer epinephrine if available",
+"Lay person flat and elevate legs"
+],
+"source":"CDC"
+},
+
+{
+"condition":"electric shock",
+"symptoms":["burn marks","unconsciousness"],
+"first_aid":[
+"Turn off power source before touching victim",
+"Check breathing and pulse",
+"Begin CPR if necessary",
+"Seek medical attention immediately"
+],
+"source":"WHO"
+},
+
+{
+"condition":"seizure",
+"symptoms":["uncontrolled shaking","loss of consciousness"],
+"first_aid":[
+"Protect person from injury",
+"Do not restrain movements",
+"Place person on side after seizure",
+"Call medical help if seizure lasts more than 5 minutes"
+],
+"source":"CDC"
+},
+
+{
+"condition":"fainting",
+"symptoms":["sudden loss of consciousness","weakness"],
+"first_aid":[
+"Lay the person flat",
+"Elevate legs slightly",
+"Loosen tight clothing",
+"Allow fresh air"
+],
+"source":"Red Cross"
+}
+]

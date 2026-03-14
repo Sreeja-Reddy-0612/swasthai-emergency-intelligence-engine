@@ -1,37 +1,71 @@
 import AgentTrace from "./AgentTrace";
+import "../styles.css";
 
 export default function ResponsePanel({ data }) {
 
   if (!data) return null;
 
+  const cleanInstructions = data.instructions.filter(
+    (line) =>
+      !line.toLowerCase().includes("you are an emergency medical assistant") &&
+      !line.toLowerCase().includes("generate clear step") &&
+      !line.toLowerCase().includes("return only numbered")
+  );
+
   return (
-    <div style={{ marginTop: "30px", textAlign: "left", maxWidth: "900px" }}>
+    <div className="card">
 
-      <h2 style={{ marginBottom: "20px" }}>
+      <div className="emergency-level">
         Emergency Level: {data.triage}
-      </h2>
+      </div>
 
-      <h3>Instructions</h3>
+      <div className="section-title">
+        User Situation
+      </div>
+      <p className="text">{data.situation}</p>
 
-      <ul style={{ lineHeight: "1.8", marginBottom: "25px" }}>
-        {data.instructions.map((step, index) => (
-          <li key={index}>{step}</li>
+      <div className="section-title">
+        Medical Knowledge Hints
+      </div>
+      <ul className="list">
+        {data.hints?.map((hint, i) => (
+          <li key={i}>{hint}</li>
         ))}
       </ul>
 
-      <h3>Sources</h3>
-
-      <ul style={{ lineHeight: "1.8", marginBottom: "25px" }}>
-        {data.sources.map((src, index) => (
-          <li key={index}>{src}</li>
+      <div className="section-title">
+        Trusted Medical Evidence
+      </div>
+      <ul className="list">
+        {data.evidence?.map((item, i) => (
+          <li key={i}>{item}</li>
         ))}
       </ul>
 
-      <h3>Confidence</h3>
+      <div className="section-title">
+        Final First Aid Instructions
+      </div>
+      <ul className="list">
+        {cleanInstructions.map((step, i) => (
+          <li key={i}>{step}</li>
+        ))}
+      </ul>
 
-      <p style={{ marginBottom: "25px" }}>
+      <div className="section-title">
+        Medical Sources
+      </div>
+      <ul className="list">
+        {data.sources.map((src, i) => (
+          <li key={i}>{src}</li>
+        ))}
+      </ul>
+
+      <div className="section-title">
+        AI Confidence
+      </div>
+      <div className="confidence">
         {data.confidence}
-      </p>
+      </div>
 
       <AgentTrace trace={data.agent_trace} />
 
